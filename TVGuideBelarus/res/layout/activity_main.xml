@@ -1,16 +1,147 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <TabHost
+        android1:id="@android:id/tabhost"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content" >
 
-</RelativeLayout>
+        <TabWidget
+            android1:id="@android:id/tabs"
+            android1:layout_width="match_parent"
+            android1:layout_height="wrap_content" >
+        </TabWidget>
+
+        <FrameLayout
+            android1:id="@android:id/tabcontent"
+            android1:layout_width="match_parent"
+            android1:layout_height="match_parent"
+            android1:foregroundGravity="center" >
+
+            <LinearLayout
+                android1:id="@+id/tab1"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content" >
+
+                <TextView
+                   android1:id="@+id/tv1" 
+                   android1:layout_width="wrap_content"
+                   android1:layout_height="wrap_content" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android1:id="@+id/tab2"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content" >
+
+                <TextView
+                   android1:id="@+id/tv2" 
+                   android1:layout_width="wrap_content"
+                   android1:layout_height="wrap_content" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android1:id="@+id/tab3"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content" >
+
+                <TextView
+                   android1:id="@+id/tv3" 
+                   android1:layout_width="wrap_content"
+                   android1:layout_height="wrap_content" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android1:id="@+id/tab4"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content" >
+
+                <TextView
+                   android1:id="@+id/tv4" 
+                   android1:layout_width="wrap_content"
+                   android1:layout_height="wrap_content" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android1:id="@+id/tab5"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content" >
+
+                <TextView
+                   android1:id="@+id/tv5" 
+                   android1:layout_width="wrap_content"
+                   android1:layout_height="wrap_content" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android1:id="@+id/tab6"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content" >
+
+                <TextView
+                   android1:id="@+id/tv6" 
+                   android1:layout_width="wrap_content"
+                   android1:layout_height="wrap_content" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android1:id="@+id/tab7"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content" >
+
+                <TextView
+                   android1:id="@+id/tv7" 
+                   android1:layout_width="wrap_content"
+                   android1:layout_height="wrap_content" >
+                </TextView>
+            </LinearLayout>
+        </FrameLayout>
+    </TabHost>
+
+    <TextView
+        android1:id="@+id/textView1"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:gravity="center_horizontal"
+        android1:text="Пятница - 25.04.2014"
+        android1:textAlignment="gravity"
+        android1:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <fragment
+        android1:id="@+id/fragment1"
+        android1:name="com.tvguidebelarus.ChannelList"
+        android1:layout_width="match_parent"
+        android1:layout_height="0dp"
+        android1:layout_weight="0.22" />
+
+    <TextView
+        android1:id="@+id/textView2"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:gravity="center_horizontal"
+        android1:text="Обновите программу ТВ" />
+
+    <TextView
+        android1:id="@+id/textView3"
+        android1:layout_width="match_parent"
+        android1:layout_height="wrap_content"
+        android1:gravity="center"
+        android1:text="Место для рекламы"
+        android1:textAppearance="?android:attr/textAppearanceLarge" />
+
+</LinearLayout>

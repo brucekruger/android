@@ -952,16 +952,34 @@ containing a value of this type.
         public static final int abs__textButton=0x7f040013;
         public static final int abs__title=0x7f04001b;
         public static final int abs__up=0x7f04000b;
-        public static final int action_settings=0x7f040032;
+        public static final int action_settings=0x7f040044;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f040026;
+        public static final int fragment1=0x7f040041;
         public static final int homeAsUp=0x7f040006;
         public static final int listMode=0x7f040002;
         public static final int normal=0x7f040001;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
+        public static final int tab1=0x7f040032;
+        public static final int tab2=0x7f040034;
+        public static final int tab3=0x7f040036;
+        public static final int tab4=0x7f040038;
+        public static final int tab5=0x7f04003a;
+        public static final int tab6=0x7f04003c;
+        public static final int tab7=0x7f04003e;
         public static final int tabMode=0x7f040003;
+        public static final int textView1=0x7f040040;
+        public static final int textView2=0x7f040042;
+        public static final int textView3=0x7f040043;
+        public static final int tv1=0x7f040033;
+        public static final int tv2=0x7f040035;
+        public static final int tv3=0x7f040037;
+        public static final int tv4=0x7f040039;
+        public static final int tv5=0x7f04003b;
+        public static final int tv6=0x7f04003d;
+        public static final int tv7=0x7f04003f;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
     }
@@ -991,8 +1009,9 @@ containing a value of this type.
         public static final int abs__search_view=0x7f030013;
         public static final int abs__simple_dropdown_hint=0x7f030014;
         public static final int activity_main=0x7f030015;
-        public static final int sherlock_spinner_dropdown_item=0x7f030016;
-        public static final int sherlock_spinner_item=0x7f030017;
+        public static final int fragment=0x7f030016;
+        public static final int sherlock_spinner_dropdown_item=0x7f030017;
+        public static final int sherlock_spinner_item=0x7f030018;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;
@@ -1039,17 +1058,21 @@ containing a value of this type.
         public static final int abs__shareactionprovider_share_with_application=0x7f090007;
         public static final int action_settings=0x7f09000e;
         public static final int app_name=0x7f09000d;
+        public static final int empty=0x7f090011;
         public static final int hello_world=0x7f09000f;
+        public static final int number_list=0x7f090010;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
@@ -1068,6 +1091,9 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0a005a;
+        public static final int CustomTabWidget=0x7f0a005c;
+        public static final int CustomTabWidgetText=0x7f0a005d;
+        public static final int CustomTheme=0x7f0a005b;
         public static final int Sherlock___TextAppearance_Small=0x7f0a0046;
         public static final int Sherlock___Theme=0x7f0a0051;
         public static final int Sherlock___Theme_DarkActionBar=0x7f0a0053;
