@@ -33,9 +33,9 @@
                 android1:layout_height="wrap_content" >
 
                 <TextView
-                   android1:id="@+id/tv1" 
-                   android1:layout_width="wrap_content"
-                   android1:layout_height="wrap_content" >
+                    android1:id="@+id/tv1"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content" >
                 </TextView>
             </LinearLayout>
 
@@ -45,9 +45,9 @@
                 android1:layout_height="wrap_content" >
 
                 <TextView
-                   android1:id="@+id/tv2" 
-                   android1:layout_width="wrap_content"
-                   android1:layout_height="wrap_content" >
+                    android1:id="@+id/tv2"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content" >
                 </TextView>
             </LinearLayout>
 
@@ -57,9 +57,9 @@
                 android1:layout_height="wrap_content" >
 
                 <TextView
-                   android1:id="@+id/tv3" 
-                   android1:layout_width="wrap_content"
-                   android1:layout_height="wrap_content" >
+                    android1:id="@+id/tv3"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content" >
                 </TextView>
             </LinearLayout>
 
@@ -69,9 +69,9 @@
                 android1:layout_height="wrap_content" >
 
                 <TextView
-                   android1:id="@+id/tv4" 
-                   android1:layout_width="wrap_content"
-                   android1:layout_height="wrap_content" >
+                    android1:id="@+id/tv4"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content" >
                 </TextView>
             </LinearLayout>
 
@@ -81,9 +81,9 @@
                 android1:layout_height="wrap_content" >
 
                 <TextView
-                   android1:id="@+id/tv5" 
-                   android1:layout_width="wrap_content"
-                   android1:layout_height="wrap_content" >
+                    android1:id="@+id/tv5"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content" >
                 </TextView>
             </LinearLayout>
 
@@ -93,9 +93,9 @@
                 android1:layout_height="wrap_content" >
 
                 <TextView
-                   android1:id="@+id/tv6" 
-                   android1:layout_width="wrap_content"
-                   android1:layout_height="wrap_content" >
+                    android1:id="@+id/tv6"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content" >
                 </TextView>
             </LinearLayout>
 
@@ -105,9 +105,9 @@
                 android1:layout_height="wrap_content" >
 
                 <TextView
-                   android1:id="@+id/tv7" 
-                   android1:layout_width="wrap_content"
-                   android1:layout_height="wrap_content" >
+                    android1:id="@+id/tv7"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content" >
                 </TextView>
             </LinearLayout>
         </FrameLayout>
