@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Vacancies</string>
+    <string name="action_settings">Settings</string>
+    <string name="tv_title">Введите название искомой вакансии:</string>
+    <string name="btn_search">Поиск</string>
+
+</resources>
