@@ -1,70 +1,38 @@
 package com.example.vacancies;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+import android.webkit.WebViewFragment;
 
-public class WebFragment extends Fragment {
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@SuppressLint("NewApi")
+public abstract class WebFragment extends WebViewFragment {
 
-	private WebView mWebView;
-	private boolean mIsWebViewAvailable;
+	abstract String getPage();
 
-	public WebFragment() {
-		// TODO Auto-generated constructor stub
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@SuppressLint("NewApi")
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
 	}
 
+	@SuppressLint({ "SetJavaScriptEnabled", "NewApi" })
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		if (mWebView != null) {
-			mWebView.destroy();
-		}
-		mWebView = new WebView(getActivity());
-		mIsWebViewAvailable = true;
-		
-		return mWebView;
-	}
-
-	@TargetApi(11)
-	@Override
-	public void onPause() {
-		super.onPause();
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			mWebView.onPause();
-		}
-	}
-
-	@TargetApi(11)
-	@Override
-	public void onResume() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			mWebView.onResume();
-		}
-		super.onResume();
-	}
-
-	@Override
-	public void onDestroyView() {
-		mIsWebViewAvailable = false;
-		super.onDestroyView();
-	}
-
-	@Override
-	public void onDestroy() {
-		if (mWebView != null) {
-			mWebView.destroy();
-			mWebView = null;
-		}
-		super.onDestroy();
-	}
-
-	public WebView getWebView() {
-		return mIsWebViewAvailable ? mWebView : null;
+		View result = super.onCreateView(inflater, container,
+				savedInstanceState);
+		getWebView().getSettings().setJavaScriptEnabled(true);
+		getWebView().getSettings().setSupportZoom(true);
+		getWebView().getSettings().setBuiltInZoomControls(true);
+		getWebView().loadUrl(getPage());
+		return (result);
 	}
 }
