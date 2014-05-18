@@ -67,9 +67,31 @@ public class MainActivity extends FragmentActivity {
 	private static ArrayList<Vacancy> vacancies;
 
 	private static ArrayList<Vacancy> buffer;
+	
+	private Button btn_prev;
+	private Button btn_next;
+	private TextView tv_Title;
 
-	TextView tv_Title;
-
+	private int pageCount = 1;
+	
+	/**
+     * Using this increment value we can move the listview items
+     */
+    private int increment = 0;
+     
+    /**
+     * Here set the values, how the ListView to be display
+     * 
+     * Be sure that you must set like this
+     * 
+     * TOTAL_LIST_ITEMS > NUM_ITEMS_PAGE
+     */
+     
+    private int total_list_items;
+    private int num_items_page = 5;
+    
+    private String input;
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +146,34 @@ public class MainActivity extends FragmentActivity {
 
 		final EditText et_Search = (EditText) findViewById(R.id.et_SearchText);
 
+		input = et_Search.getEditableText().toString();
+		
+		btn_prev = (Button)findViewById(R.id.prev);
+	    btn_next = (Button)findViewById(R.id.next);
+	    
+	    btn_prev.setEnabled(false);
+	    btn_next.setEnabled(false);
+	    
+	    btn_next.setOnClickListener(new OnClickListener() {
+	         
+	        public void onClick(View v) {
+	             
+	            increment++;
+	            loadList(input, increment);
+	            CheckEnable();
+	        }
+	    });
+	     
+	    btn_prev.setOnClickListener(new OnClickListener() {
+	         
+	        public void onClick(View v) {
+	             
+	            increment--;
+	            loadList(input, increment);
+	            CheckEnable();
+	        }
+	    });
+		
 		Button btn_Search = (Button) findViewById(R.id.btn_Search);
 
 		btn_Search.setOnClickListener(new OnClickListener() {
@@ -132,7 +182,7 @@ public class MainActivity extends FragmentActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				String input = et_Search.getEditableText().toString();
+				input = et_Search.getEditableText().toString();
 
 				if (input == "") {
 					Toast.makeText(getApplicationContext(),
@@ -158,16 +208,17 @@ public class MainActivity extends FragmentActivity {
 					 * + input;
 					 */
 
-					String stringUrl = "https://api.hh.ru/vacancies?per_page=5&?"
-							+ key + "=" + input;
+					String stringUrl = "https://api.hh.ru/vacancies?per_page=" + String.valueOf(num_items_page)
+							+ "&?page=" + String.valueOf(pageCount) + "?" + key + "=" + input;
 
 					DownloadWebpageTask downloader = new DownloadWebpageTask();
 					downloader.execute(stringUrl);
 
 					try {
 						String json_source = downloader.get();
-
+						
 						JSONObject json = new JSONObject(json_source);
+						total_list_items = json.getInt("pages");
 						JSONArray lineItems = json.getJSONArray("items");
 						JSONObject subjson = new JSONObject();
 
@@ -265,6 +316,14 @@ public class MainActivity extends FragmentActivity {
 									.add(R.id.fragment_container, vacancyFraq)
 									.commit();
 						}
+						
+						btn_next.setEnabled(true);
+						
+						int val = total_list_items%num_items_page;
+					    val = val==0?0:1;
+					    pageCount = total_list_items/num_items_page+val;
+						
+						increment++;
 
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
@@ -390,6 +449,177 @@ public class MainActivity extends FragmentActivity {
 		return new String(buffer);
 	}
 
+    /**
+     * Method for enabling and disabling Buttons
+     */
+    private void CheckEnable()
+    {
+        if(increment+1 == pageCount)
+        {
+            btn_next.setEnabled(false);
+        }
+        else if(increment == 0)
+        {
+            btn_prev.setEnabled(false);
+        }
+        else
+        {
+            btn_prev.setEnabled(true);
+            btn_next.setEnabled(true);
+        }
+    }
+    
+    /**
+     * Method for loading data in listview
+     * @param number
+     */
+    private void loadList(String input, int number)
+    {
+    	ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		if (networkInfo != null && networkInfo.isConnected()) {
+			// fetch data
+
+			String stringUrl = "https://api.hh.ru/vacancies?per_page=" + String.valueOf(num_items_page)
+					+ "&?page=" + String.valueOf(number) + "?" + key + "=" + input;
+
+			DownloadWebpageTask downloader = new DownloadWebpageTask();
+			downloader.execute(stringUrl);
+
+			try {
+				String json_source = downloader.get();
+
+				JSONObject json = new JSONObject(json_source);
+				
+				total_list_items = json.getInt("pages");
+				
+				JSONArray lineItems = json.getJSONArray("items");
+				JSONObject subjson = new JSONObject();
+
+				vacancies.clear();
+				vacancies = new ArrayList<Vacancy>();
+
+				for (int i = 0; i < lineItems.length(); i++) {
+					json = lineItems.getJSONObject(i);
+
+					Vacancy vacancy = new Vacancy();
+
+					vacancy.setId(json.getString("id"));
+
+					vacancy.setPremium(Boolean.valueOf(json
+							.getString("premium")));
+
+					vacancy.setAlternate_url(json
+							.getString("alternate_url"));
+
+					Salary salary = new Salary();
+					if (json.isNull("salary") == false) {
+						subjson = json.getJSONObject("salary");
+						salary.setTo(subjson.get("to"));
+						salary.setFrom(Integer.getInteger(
+								subjson.getString("from"), 0));
+						salary.setCurrency(subjson
+								.getString("currency"));
+					}
+					vacancy.setSalary(salary);
+
+					vacancy.setId(json.getString("name"));
+
+					Area area = new Area();
+					if (json.isNull("area") == false) {
+						subjson = json.getJSONObject("area");
+						area.setId(json.getString("id"));
+						area.setName(json.getString("name"));
+						area.setUrl(json.getString("url"));
+					}
+					vacancy.setArea(area);
+
+					vacancy.setUrl(json.getString("url"));
+
+					vacancy.setPublished_at(json
+							.getString("published_at"));
+
+					Employer employer = new Employer();
+					if (json.isNull("employer") == false) {
+						subjson = json.getJSONObject("employer");
+
+						employer.setId(subjson.getString("id"));
+						employer.setName(subjson.getString("name"));
+						employer.setUrl(subjson.getString("url"));
+						employer.setAlternate_url(subjson
+								.getString("alternate_url"));
+
+						Logo_urls logo_urls = new Logo_urls();
+
+						if (json.getJSONObject("employer").isNull("logo_urls") == false) {
+							subjson = json.getJSONObject("employer").getJSONObject("logo_urls");
+							logo_urls.set90(subjson.getString("90"));
+							logo_urls.set240(subjson.getString("240"));
+							logo_urls.setOriginal(subjson
+									.getString("original"));
+						}
+						employer.setLogo_urls(logo_urls);
+					}
+					vacancy.setEmployer(employer);
+
+					vacancy.setResponse_letter_required(Boolean.valueOf(json
+							.getString("response_letter_required")));
+
+					Type type = new Type();
+					if (json.getJSONObject("type") != null) {
+						subjson = json.getJSONObject("type");
+						type.setId(subjson.getString("id"));
+						type.setName(subjson.getString("name"));
+					}
+					vacancy.setType(type);
+
+					vacancies.add(vacancy);
+				}
+
+				buffer.clear();
+				buffer = new ArrayList<Vacancy>(vacancies);
+
+				VacancyAdapter adapter = new VacancyAdapter(
+						R.layout.list_item, vacancies,
+						getApplicationContext());
+
+				if (getSupportFragmentManager().findFragmentById(
+						R.id.fragment_container) != null) {
+
+					VacancyFragment vacancyFraq = new VacancyFragment();
+					vacancyFraq.setListAdapter(null);
+					vacancyFraq.setListAdapter(adapter);
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.fragment_container, vacancyFraq)
+							.commit();
+				}
+				
+			    int val = total_list_items%num_items_page;
+			    val = val==0?0:1;
+			    pageCount = total_list_items/num_items_page+val;
+			    
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Log.i(DEBUG_TAG, e.getMessage());
+				Toast.makeText(getApplicationContext(), NetErrorMsg,
+						Toast.LENGTH_LONG).show();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Log.i(DEBUG_TAG, e.getMessage());
+				Toast.makeText(getApplicationContext(), NetErrorMsg,
+						Toast.LENGTH_LONG).show();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Log.i(DEBUG_TAG, e.getMessage());
+				Toast.makeText(getApplicationContext(), NetErrorMsg,
+						Toast.LENGTH_LONG).show();
+			}
+		}
+    }
+	
 	@Override
 	public Object onRetainCustomNonConfigurationInstance() {
 		// TODO Auto-generated method stub

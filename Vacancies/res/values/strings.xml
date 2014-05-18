@@ -7,7 +7,9 @@
     <string name="tv_category">Поиск по категории:</string>
     <string name="tv_title">Введите значение для поиска:</string>
     <string name="btn_search">Поиск</string>
-        <string name="btn_browse">Перейти на страницу вакансии</string>
+    <string name="btn_prev">Пред</string>
+    <string name="btn_next">Cлед</string>
+    <string name="btn_browse">Перейти на страницу вакансии</string>
     
     <string name="tv_pubishdate">vacancy date</string>
     <string name="tv_vacancyname">vacancy name</string>
