@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -10,29 +10,47 @@
     tools:context=".MainActivity" >
 
     <TextView
+        android:id="@+id/tv_Category"
+        style="@style/CodeFontSmall"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/tv_category" />
+
+    <Spinner
+        android:id="@+id/sp_Category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
         android:id="@+id/tv_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/CodeFontSmall"
         android:layout_gravity="center_horizontal"
         android:text="@string/tv_title" />
 
-    <EditText
-        android:id="@+id/eT_SearchText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" >
+        android:orientation="horizontal" >
 
-        <requestFocus />
-    </EditText>
+        <EditText
+            android:id="@+id/et_SearchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text" >
 
-    <Button
-        android:id="@+id/btn_Search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/btn_search" />
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_Search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/btn_search" />
+    </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </FrameLayout>

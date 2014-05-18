@@ -1,5 +1,6 @@
 package com.example.vacancies;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
@@ -12,14 +13,18 @@ public class VacancyFragment extends ListFragment {
 	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+		super.onActivityCreated(savedInstanceState);
 	}
-	
+
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
-		super.onListItemClick(l, v, position, id);
+
+		Intent i = new Intent(getActivity(), MainActivity.class);
+		i.putExtra(MainActivity.EXTRA_ID, position);
+
+		startActivity(i);
 	}
 }

@@ -2,8 +2,16 @@
 <resources>
 
     <string name="app_name">Vacancies</string>
+    <string name="app_browser">Browser</string>
     <string name="action_settings">Settings</string>
-    <string name="tv_title">Введите название искомой вакансии:</string>
+    <string name="tv_category">Поиск по категории:</string>
+    <string name="tv_title">Введите значение для поиска:</string>
     <string name="btn_search">Поиск</string>
+        <string name="btn_browse">Перейти на страницу вакансии</string>
+    
+    <string name="tv_pubishdate">vacancy date</string>
+    <string name="tv_vacancyname">vacancy name</string>
+    <string name="img_logo">employer logo</string>
+    <string name="tv_employer">vacancy employer</string>
 
 </resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_name_vacancy"
+            style="@style/CodeFontLarge"
+            android:gravity="center"
+            android:text="name_vacancy" />
+
+        <TextView
+            android:id="@+id/tv_id_vacancy"
+            style="@style/CodeFontMedium"
+            android:gravity="center"
+            android:text="id_vacancy" />
+
+        <TextView
+            android:id="@+id/tv_publicshed_at_vacancy"
+            style="@style/CodeFontSmall"
+            android:text="publicshed_at_vacancy" />
+
+        <TextView
+            android:id="@+id/tv_region_vacancy"
+            style="@style/CodeFontSmall"
+            android:text="region_vacancy" />
+
+        <TextView
+            android:id="@+id/tv_salary_vacancy"
+            style="@style/CodeFontSmall"
+            android:text="salary_vacancy" />
+
+        <TextView
+            android:id="@+id/tv_employer_vacancy"
+            style="@style/CodeFontSmall"
+            android:text="employer_vacancy" />
+
+        <ImageView
+            android:id="@+id/img_logo_vacancy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/star_big_on" />
+
+        <TextView
+            android:id="@+id/tv_type_vacancy"
+            style="@style/CodeFontSmall"
+            android:text="type_vacancy" />
+
+        <Button
+            android:id="@+id/btn_browse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/btn_browse" />
+    </LinearLayout>
+
+</ScrollView>

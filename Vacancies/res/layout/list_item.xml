@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_PubishDate"
+        style="@style/CodeFontMedium"
+        android:text="@string/tv_pubishdate" />
+
+    <TextView
+        android:id="@+id/tv_VacancyName"
+        style="@style/CodeFontSmall"
+        android:text="@string/tv_vacancyname" />
+    
+    <ImageView
+        android:id="@+id/img_Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/img_logo" />
+    
+    <TextView
+        android:id="@+id/tv_Employer"
+        style="@style/CodeFontSmall"
+        android:text="@string/tv_employer" />
+
+</LinearLayout>
