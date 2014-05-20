@@ -68,15 +68,20 @@ public class MainActivity extends FragmentActivity {
 	private static ArrayList<Vacancy> vacancies;
 
 	private static ArrayList<Vacancy> buffer;
+<<<<<<< HEAD
 
 	private static int vacancyId = -1;
 	private static int bufferId = -1;
 
+=======
+	
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 	private Button btn_prev;
 	private Button btn_next;
 	private TextView tv_Title;
 
 	private int pageCount = 1;
+<<<<<<< HEAD
 
 	/**
 	 * Using this increment value we can move the listview items
@@ -96,6 +101,27 @@ public class MainActivity extends FragmentActivity {
 
 	private String input;
 
+=======
+	
+	/**
+     * Using this increment value we can move the listview items
+     */
+    private int increment = 0;
+     
+    /**
+     * Here set the values, how the ListView to be display
+     * 
+     * Be sure that you must set like this
+     * 
+     * TOTAL_LIST_ITEMS > NUM_ITEMS_PAGE
+     */
+     
+    private int total_list_items;
+    private int num_items_page = 5;
+    
+    private String input;
+	
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -199,6 +225,7 @@ public class MainActivity extends FragmentActivity {
 		final EditText et_Search = (EditText) findViewById(R.id.et_SearchText);
 
 		input = et_Search.getEditableText().toString();
+<<<<<<< HEAD
 
 		btn_prev = (Button) findViewById(R.id.prev);
 		btn_next = (Button) findViewById(R.id.next);
@@ -226,6 +253,35 @@ public class MainActivity extends FragmentActivity {
 			}
 		});
 
+=======
+		
+		btn_prev = (Button)findViewById(R.id.prev);
+	    btn_next = (Button)findViewById(R.id.next);
+	    
+	    btn_prev.setEnabled(false);
+	    btn_next.setEnabled(false);
+	    
+	    btn_next.setOnClickListener(new OnClickListener() {
+	         
+	        public void onClick(View v) {
+	             
+	            increment++;
+	            loadList(input, increment);
+	            CheckEnable();
+	        }
+	    });
+	     
+	    btn_prev.setOnClickListener(new OnClickListener() {
+	         
+	        public void onClick(View v) {
+	             
+	            increment--;
+	            loadList(input, increment);
+	            CheckEnable();
+	        }
+	    });
+		
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 		Button btn_Search = (Button) findViewById(R.id.btn_Search);
 
 		btn_Search.setOnClickListener(new OnClickListener() {
@@ -260,17 +316,22 @@ public class MainActivity extends FragmentActivity {
 					 * + input;
 					 */
 
+<<<<<<< HEAD
 					String stringUrl = "https://api.hh.ru/vacancies?per_page="
 							+ String.valueOf(num_items_page) + "&?page="
 							+ String.valueOf(pageCount) + "?" + key + "="
 							+ input;
+=======
+					String stringUrl = "https://api.hh.ru/vacancies?per_page=" + String.valueOf(num_items_page)
+							+ "&?page=" + String.valueOf(pageCount) + "?" + key + "=" + input;
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 
 					DownloadWebpageTask downloader = new DownloadWebpageTask();
 					downloader.execute(stringUrl);
 
 					try {
 						String json_source = downloader.get();
-
+						
 						JSONObject json = new JSONObject(json_source);
 						total_list_items = json.getInt("pages");
 						JSONArray lineItems = json.getJSONArray("items");
@@ -384,6 +445,14 @@ public class MainActivity extends FragmentActivity {
 												vacancyFraq).commit();
 							}
 						}
+						
+						btn_next.setEnabled(true);
+						
+						int val = total_list_items%num_items_page;
+					    val = val==0?0:1;
+					    pageCount = total_list_items/num_items_page+val;
+						
+						increment++;
 
 						btn_next.setEnabled(true);
 
@@ -496,6 +565,7 @@ public class MainActivity extends FragmentActivity {
 		return new String(buffer);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Method for enabling and disabling Buttons
 	 */
@@ -517,13 +587,47 @@ public class MainActivity extends FragmentActivity {
 	 */
 	private void loadList(String input, int number) {
 		ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+=======
+    /**
+     * Method for enabling and disabling Buttons
+     */
+    private void CheckEnable()
+    {
+        if(increment+1 == pageCount)
+        {
+            btn_next.setEnabled(false);
+        }
+        else if(increment == 0)
+        {
+            btn_prev.setEnabled(false);
+        }
+        else
+        {
+            btn_prev.setEnabled(true);
+            btn_next.setEnabled(true);
+        }
+    }
+    
+    /**
+     * Method for loading data in listview
+     * @param number
+     */
+    private void loadList(String input, int number)
+    {
+    	ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 		if (networkInfo != null && networkInfo.isConnected()) {
 			// fetch data
 
+<<<<<<< HEAD
 			String stringUrl = "https://api.hh.ru/vacancies?per_page="
 					+ String.valueOf(num_items_page) + "&?page="
 					+ String.valueOf(number) + "?" + key + "=" + input;
+=======
+			String stringUrl = "https://api.hh.ru/vacancies?per_page=" + String.valueOf(num_items_page)
+					+ "&?page=" + String.valueOf(number) + "?" + key + "=" + input;
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 
 			DownloadWebpageTask downloader = new DownloadWebpageTask();
 			downloader.execute(stringUrl);
@@ -532,9 +636,15 @@ public class MainActivity extends FragmentActivity {
 				String json_source = downloader.get();
 
 				JSONObject json = new JSONObject(json_source);
+<<<<<<< HEAD
 
 				total_list_items = json.getInt("pages");
 
+=======
+				
+				total_list_items = json.getInt("pages");
+				
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 				JSONArray lineItems = json.getJSONArray("items");
 				JSONObject subjson = new JSONObject();
 
@@ -551,7 +661,12 @@ public class MainActivity extends FragmentActivity {
 					vacancy.setPremium(Boolean.valueOf(json
 							.getString("premium")));
 
+<<<<<<< HEAD
 					vacancy.setAlternate_url(json.getString("alternate_url"));
+=======
+					vacancy.setAlternate_url(json
+							.getString("alternate_url"));
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 
 					Salary salary = new Salary();
 					if (json.isNull("salary") == false) {
@@ -559,7 +674,12 @@ public class MainActivity extends FragmentActivity {
 						salary.setTo(subjson.get("to"));
 						salary.setFrom(Integer.getInteger(
 								subjson.getString("from"), 0));
+<<<<<<< HEAD
 						salary.setCurrency(subjson.getString("currency"));
+=======
+						salary.setCurrency(subjson
+								.getString("currency"));
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 					}
 					vacancy.setSalary(salary);
 
@@ -576,7 +696,12 @@ public class MainActivity extends FragmentActivity {
 
 					vacancy.setUrl(json.getString("url"));
 
+<<<<<<< HEAD
 					vacancy.setPublished_at(json.getString("published_at"));
+=======
+					vacancy.setPublished_at(json
+							.getString("published_at"));
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 
 					Employer employer = new Employer();
 					if (json.isNull("employer") == false) {
@@ -591,12 +716,20 @@ public class MainActivity extends FragmentActivity {
 						Logo_urls logo_urls = new Logo_urls();
 
 						if (json.getJSONObject("employer").isNull("logo_urls") == false) {
+<<<<<<< HEAD
 							subjson = json.getJSONObject("employer")
 									.getJSONObject("logo_urls");
 							logo_urls.set90(subjson.getString("90"));
 							logo_urls.set240(subjson.getString("240"));
 							logo_urls
 									.setOriginal(subjson.getString("original"));
+=======
+							subjson = json.getJSONObject("employer").getJSONObject("logo_urls");
+							logo_urls.set90(subjson.getString("90"));
+							logo_urls.set240(subjson.getString("240"));
+							logo_urls.setOriginal(subjson
+									.getString("original"));
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 						}
 						employer.setLogo_urls(logo_urls);
 					}
@@ -619,6 +752,7 @@ public class MainActivity extends FragmentActivity {
 				buffer.clear();
 				buffer = new ArrayList<Vacancy>(vacancies);
 
+<<<<<<< HEAD
 				VacancyAdapter adapter = new VacancyAdapter(R.layout.list_item,
 						vacancies, getApplicationContext());
 
@@ -650,6 +784,27 @@ public class MainActivity extends FragmentActivity {
 				val = val == 0 ? 0 : 1;
 				pageCount = total_list_items / num_items_page + val;
 
+=======
+				VacancyAdapter adapter = new VacancyAdapter(
+						R.layout.list_item, vacancies,
+						getApplicationContext());
+
+				if (getSupportFragmentManager().findFragmentById(
+						R.id.fragment_container) != null) {
+
+					VacancyFragment vacancyFraq = new VacancyFragment();
+					vacancyFraq.setListAdapter(null);
+					vacancyFraq.setListAdapter(adapter);
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.fragment_container, vacancyFraq)
+							.commit();
+				}
+				
+			    int val = total_list_items%num_items_page;
+			    val = val==0?0:1;
+			    pageCount = total_list_items/num_items_page+val;
+			    
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -670,8 +825,13 @@ public class MainActivity extends FragmentActivity {
 						Toast.LENGTH_LONG).show();
 			}
 		}
+<<<<<<< HEAD
 	}
 
+=======
+    }
+	
+>>>>>>> 3a0f2d6f99aaea064f18bc8c1c86ae0ff145e180
 	@Override
 	public Object onRetainCustomNonConfigurationInstance() {
 		// TODO Auto-generated method stub
