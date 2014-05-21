@@ -99,9 +99,6 @@ public class VacancyAdapter extends ArrayAdapter {
 		String logo_url = data.get(position).getEmployer().getLogo_urls().get90();
 
 		InputStream is = null;
-		// Only display the first 512000 characters of the retrieved
-		// web page content.
-		int len = 512000;
 		int response;
 
 		try {

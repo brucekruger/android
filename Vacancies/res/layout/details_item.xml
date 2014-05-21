@@ -13,44 +13,54 @@
             android:id="@+id/tv_name_vacancy"
             style="@style/CodeFontLarge"
             android:gravity="center"
-            android:text="name_vacancy" />
+            android:text="name_vacancy"
+            android:paddingBottom="15dp" />
 
         <TextView
             android:id="@+id/tv_id_vacancy"
             style="@style/CodeFontMedium"
             android:gravity="center"
-            android:text="id_vacancy" />
+            android:text="id_vacancy"
+            android:paddingBottom="10dp" />
 
         <TextView
             android:id="@+id/tv_publicshed_at_vacancy"
             style="@style/CodeFontSmall"
-            android:text="publicshed_at_vacancy" />
+            android:gravity="center"
+            android:text="publicshed_at_vacancy"
+            android:paddingBottom="10dp" />
 
         <TextView
             android:id="@+id/tv_region_vacancy"
             style="@style/CodeFontSmall"
-            android:text="region_vacancy" />
+            android:text="region_vacancy"
+            android:paddingBottom="10dp" />
 
         <TextView
             android:id="@+id/tv_salary_vacancy"
             style="@style/CodeFontSmall"
-            android:text="salary_vacancy" />
+            android:text="salary_vacancy"
+            android:paddingBottom="10dp" />
 
         <TextView
             android:id="@+id/tv_employer_vacancy"
             style="@style/CodeFontSmall"
-            android:text="employer_vacancy" />
+            android:text="employer_vacancy"
+            android:paddingBottom="10dp" />
 
         <ImageView
             android:id="@+id/img_logo_vacancy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/star_big_on" />
+            android:layout_gravity="center"
+            android:src="@android:drawable/star_big_on"
+            android:paddingBottom="10dp" />
 
         <TextView
             android:id="@+id/tv_type_vacancy"
             style="@style/CodeFontSmall"
-            android:text="type_vacancy" />
+            android:text="type_vacancy"
+            android:paddingBottom="10dp" />
 
         <Button
             android:id="@+id/btn_browse"

@@ -95,9 +95,6 @@ public class DetailsFragment extends Fragment {
 			String logo_url = current.getEmployer().getLogo_urls().get240();
 
 			InputStream is = null;
-			// Only display the first 512000 characters of the retrieved
-			// web page content.
-			int len = 512000;
 			URL url;
 			int response;
 

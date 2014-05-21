@@ -3,13 +3,44 @@
 
     <string name="app_name">Vacancies</string>
     <string name="app_browser">Browser</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Настройки</string>
     <string name="tv_category">Поиск по категории:</string>
     <string name="tv_title">Введите значение для поиска:</string>
     <string name="btn_search">Поиск</string>
     <string name="btn_prev">Пред</string>
     <string name="btn_next">Cлед</string>
     <string name="btn_browse">Перейти на страницу вакансии</string>
+    
+    <string-array name="items">
+        <item>Опыт работы</item>
+        <item>Тип занятости</item>
+        <item>График работы</item>
+        <item>Регион</item>
+        <item>Ветка или станция метро</item>
+        <item>Профобласть или специализация</item>
+        <item>Идентификатор [компании]</item>
+        <item>Код валюты</item>
+        <item>Размер заработной платы</item>
+        <item>За период</item>
+    </string-array>
+    
+    <string-array name="keys">
+        <item>experience</item>
+        <item>employment</item>
+        <item>schedule</item>
+        <item>area</item>
+        <item>metro</item>
+        <item>specialization</item>
+        <item>employer_id</item>
+        <item>currency</item>
+        <item>salary</item>
+        <item>period</item>
+    </string-array>
+     
+    <string name="netError">Не удалось подключиться к сети</string>
+    <string name="searchByCat">Поиск по категории </string>
+    <string name="enterSmth">Введите что-нибудь в строку поиска!</string>
+    <string name="failedLoad">Не удалось получить данные из сети</string>
     
     <string name="tv_pubishdate">vacancy date</string>
     <string name="tv_vacancyname">vacancy name</string>
