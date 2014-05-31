@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Vacancies</string>
+    <string name="app_browser">Browser</string>
+    <string name="action_settings">Налады</string>
+    <string name="language_settings">Налады мовы</string>
+    <string name="lang_default">Сiстэмная мова</string>
+    
+    <string name="lang_english">Англiйская мова</string>
+    <string name="lang_byelarussian">Беларуская мова</string>
+    <string name="lang_russian">Руская мова</string>
+    
+    <string name="tv_category">Пошук па катэгорыi:</string>
+    <string name="tv_title">Увядзiце значэнне для пошуку:</string>
+    <string name="btn_search">Пошук</string>
+    <string name="btn_prev">Папяр</string>
+    <string name="btn_next">Наст</string>
+    <string name="btn_browse">Перайсцi на старонку вакансii</string>
+    
+    <string-array name="items">
+        <item>Досвед працы</item>
+        <item>Тып занятасцi</item>
+        <item>Графiк працы</item>
+        <item>Рэгiён</item>
+        <item>Ветка або станцыя метро</item>
+        <item>Профобласть або спецiялiзацыя</item>
+        <item>Iдэнтыфiкатар [кампанii]</item>
+        <item>Код валюты</item>
+        <item>Памер заработной платы</item>
+        <item>За перыяд</item>
+    </string-array>
+     
+    <string name="netError">Не удалося падключыцца да сеткi</string>
+    <string name="searchByCat">Пошук па катэгорыi </string>
+    <string name="enterSmth">Увядзiце што-небудзь у радок пошуку!</string>
+    <string name="failedLoad">Не удалося атрымаць дадзеныя з сеткi</string>
+    
+    <string name="tv_pubishdate">vacancy date</string>
+    <string name="tv_vacancyname">vacancy name</string>
+    <string name="img_logo">employer logo</string>
+    <string name="tv_employer">vacancy employer</string>
+
+</resources>

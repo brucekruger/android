@@ -7,10 +7,16 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
+    
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -18,7 +24,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.vacancies.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:configChanges="locale|layoutDirection" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +34,8 @@
         </activity>
         <activity
             android:name="com.example.vacancies.WebActivity"
-            android:label="@string/app_browser" >
+            android:label="@string/app_browser"
+            android:configChanges="locale|layoutDirection" >
         </activity>
     </application>
 

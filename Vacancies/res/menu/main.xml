@@ -4,6 +4,23 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="@string/language_settings">
+        <menu>
+            <group android:checkableBehavior="single" >
+                <item
+                    android:id="@+id/lng_default"
+                    android:title="@string/lang_default"/>
+                <item
+                    android:id="@+id/lng_english"
+                    android:title="@string/lang_english"/>
+                <item
+                    android:id="@+id/lng_byelarussian"
+                    android:title="@string/lang_byelarussian"/>
+                <item
+                    android:id="@+id/lng_russian"
+                    android:title="@string/lang_russian"/>
+            </group>
+        </menu>
+    </item>
 
 </menu>

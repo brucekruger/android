@@ -30,10 +30,12 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -42,6 +44,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -52,13 +55,16 @@ public class MainActivity extends FragmentActivity {
 	private static final String INFO_TAG = "INFO";
 	public static final String EXTRA_ID = "id";
 
+	private Configuration config;
+	
 	private static Locale current;
 	
 	private static String NetErrorMsg;
 
 	private static String[] items = null;
 
-	private static String[] keys = null;
+	private static String[] keys = { "experience", "employment", "schedule", "area", "metro",
+									 "specialization", "employer_id", "currency", "salary", "period" };
 
 	private static String key = "";
 
@@ -98,12 +104,11 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
 		NetErrorMsg = getResources().getString(R.string.netError);
 		current = getResources().getConfiguration().locale;
 		
 		items = getResources().getStringArray(R.array.items);
-		keys = getResources().getStringArray(R.array.keys);
 		
 		ArrayList<Vacancy> data = (ArrayList<Vacancy>) getLastCustomNonConfigurationInstance();
 
@@ -440,7 +445,85 @@ public class MainActivity extends FragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		
+		String lang = getResources().getConfiguration().locale.getLanguage();
+		
+		if(lang.equals(Locale.getDefault().getLanguage()))
+		{
+			menu.getItem(0).getSubMenu().getItem(0).setChecked(true);
+			return true;
+		}
+		if(lang.equals("en"))
+		{
+			menu.getItem(0).getSubMenu().getItem(1).setChecked(true);
+			return true;
+		}
+		if(lang.equals("by"))
+		{
+			menu.getItem(0).getSubMenu().getItem(2).setChecked(true);
+			return true;
+		}
+		if(lang.equals("ru"))
+		{
+			menu.getItem(0).getSubMenu().getItem(3).setChecked(true);
+			return true;
+		}
+		
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		
+		config = new Configuration(getResources().getConfiguration());
+		
+		String languageToLoad = Locale.getDefault().getLanguage();
+		
+		switch(item.getItemId())
+		{
+			case R.id.lng_default:
+				config.locale = new Locale(languageToLoad);
+				if(item.isChecked()) item.setChecked(false);
+				else item.setChecked(true);
+				onConfigurationChanged(config);
+				return true;
+				
+			case R.id.lng_english:
+				config.locale = new Locale("en");
+				if(item.isChecked()) item.setChecked(false);
+				else item.setChecked(true);
+				onConfigurationChanged(config);
+				return true;
+				
+			case R.id.lng_byelarussian:
+				config.locale = new Locale("by");
+				if(item.isChecked()) item.setChecked(false);
+				else item.setChecked(true);
+				onConfigurationChanged(config);
+				return true;
+				
+			case R.id.lng_russian:
+				config.locale = new Locale("ru");
+				if(item.isChecked()) item.setChecked(false);
+				else item.setChecked(true);
+				onConfigurationChanged(config);
+				return true;
+				
+			default:
+				return super.onOptionsItemSelected(item); 	
+				//return true;
+		}
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// TODO Auto-generated method stub
+		super.onConfigurationChanged(newConfig);
+		getBaseContext().getResources().updateConfiguration(newConfig, getBaseContext().getResources().getDisplayMetrics());
+		Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(i);
 	}
 
 	private class DownloadWebpageTask extends AsyncTask<String, Void, String> {
